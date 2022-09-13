@@ -307,8 +307,9 @@ RUN chmod 755 /etc/supervisord.conf
 
 EXPOSE 8080
 
-USER user
-ENV USER=user
-WORKDIR /home/user
+# USER user
+# ENV USER=user
+# WORKDIR /home/user
+WORKDIR /root
 
 ENTRYPOINT ["/usr/bin/supervisord"]

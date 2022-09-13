@@ -17,7 +17,7 @@ spec:
 #      hostNetwork: true
       containers:
       - name: xgl
-        image: ghcr.io/ehfd/nvidia-glx-desktop:latest
+        image: quay.io/vessl-ai/docker-nvidia-glx-desktop:0.0.1
         env:
         - name: TZ
           value: "UTC"

@@ -71,6 +71,14 @@ sudo nvidia-xconfig --virtual="${SIZEW}x${SIZEH}" --depth="$CDEPTH" --mode=$(ech
 sudo sed -i '/Driver\s\+"nvidia"/a\    Option         "ModeValidation" "NoMaxPClkCheck, NoEdidMaxPClkCheck, NoMaxSizeCheck, NoHorizSyncCheck, NoVertRefreshCheck, NoVirtualSizeCheck, NoExtendedGpuCapabilitiesCheck, NoTotalSizeCheck, NoDualLinkDVICheck, NoDisplayPortBandwidthCheck, AllowNon3DVisionModes, AllowNonHDMI3DModes, AllowNonEdidModes, NoEdidHDMI2Check, AllowDpInterlaced"\n    Option         "HardDPMS" "False"' /etc/X11/xorg.conf
 sudo sed -i '/Section\s\+"Monitor"/a\    '"$MODELINE" /etc/X11/xorg.conf
 
+sudo bash -c "cat <<EOF >> /etc/X11/xorg.conf
+
+Section \"ServerFlags\"
+    Option \"AutoAddGPU\" \"false\"
+EndSection
+EOF"
+
+
 export DISPLAY=":0"
 export __GL_SYNC_TO_VBLANK="0"
 export __NV_PRIME_RENDER_OFFLOAD="1"
